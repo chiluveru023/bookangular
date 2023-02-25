@@ -1,0 +1,23 @@
+<div class="col-md-8 offset-md-3">
+    <h2>Update Book</h2>
+    <form (ngSubmit) = "onSubmit()">
+    <div class="form-group">
+        <label>Book Name</label>
+        <input type="text" class="form-control" id="book_name" [(ngModel)] = "book.book_name" name="book_name">
+    </div><br>
+    <div class="form-group">
+        <label>Book Genre</label>
+        <input type="text" class="form-control" id="book_genre" [(ngModel)] = "book.book_genre" name="book_genre">
+    </div><br>
+    <div class="form-group">
+        <label>Book Author</label>
+        <input type="text" class="form-control" id="book_author" [(ngModel)] = "book.book_author" name="book_author"> 
+    </div> <br>
+    <div class="form-group">
+        <label>Book Publishers</label>
+        <input type="text" class="form-control" id="book_publishers" [(ngModel)] = "book.book_publishers" name="book_publishers">   
+    </div>
+    <br>
+    <button class= "btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>
