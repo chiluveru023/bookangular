@@ -12,9 +12,9 @@
     <tbody>
         <tr *ngFor = "let book of books">
             <td>{{ book.book_name}}</td>
-            <td>{{ book.book_genre}}</td>
+            <td>{{ book.genre.book_genre}}</td>
             <td>{{ book.book_author}}</td>
-            <td>{{ book.book_publishers}}</td>
+            <td>{{ book.publisher.book_publisher}}</td>
             <td>
                 <button (click) = "updateBook(book.book_id)" class="btn btn-info"> Update</button>
                 <button (click) = "deleteBook(book.book_id)" class="btn btn-danger" style="margin-left:10px;"> Delete</button>

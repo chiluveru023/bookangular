@@ -1,4 +1,4 @@
 export class Publisher {
-    "id":number;
-    "name":String
+  publisher_id!: number;
+  book_publisher!: string;
 }

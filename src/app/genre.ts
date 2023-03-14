@@ -1,4 +1,5 @@
 export class Genre {
-    "id":number;
-    "genre":String
+   
+    genre_id!: number;
+    book_genre!: string;
 }

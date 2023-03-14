@@ -1,21 +1,30 @@
 <div class="col-md-8 offset-md-3">
     <h2>Update Book</h2>
-    <form (ngSubmit) = "onSubmit()">
-    <div class="form-group">
+    <form [formGroup]="createBookForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
         <label>Book Name</label>
-        <input type="text" class="form-control" id="book_name" [(ngModel)] = "book.book_name" name="book_name">
+        <input type="text" class="form-control" id="book_name" formControlName = "book_name" name="book_name" autocomplete="off">
     </div><br>
     <div class="form-group">
-        <label>Book Genre</label>
-        <input type="text" class="form-control" id="book_genre" [(ngModel)] = "book.book_genre" name="book_genre">
+        <label for="book_genre">Book Genre</label>
+        <select id="book_genre" class="form-control" [(ngModel)] = "selectedGenere" formControlName="book_genre" name="book_genre">
+            <option selected value="undefined">Select Genere</option>
+        <option *ngFor="let genre of genres" [value]="genre.genre_id">{{genre.book_genre}}</option>
+      </select>
     </div><br>
     <div class="form-group">
         <label>Book Author</label>
-        <input type="text" class="form-control" id="book_author" [(ngModel)] = "book.book_author" name="book_author"> 
+        <input type="text" class="form-control" id="book_author" formControlName="book_author" name="book_author"
+        autocomplete="off">
     </div> <br>
     <div class="form-group">
-        <label>Book Publishers</label>
-        <input type="text" class="form-control" id="book_publishers" [(ngModel)] = "book.book_publishers" name="book_publishers">   
+        <label for="book_publishers">Book Publishers</label>
+        <select id="book_publishers" [(ngModel)]="selectedPublisher" formControlName="book_publishers"
+          name="book_publishers" class="form-control">
+          <option selected value="undefined">Select Publisher</option>
+          <option *ngFor="let publisher of publishers" [value]="publisher.publisher_id">{{publisher.book_publisher}}
+          </option>
+        </select>
     </div>
     <br>
     <button class= "btn btn-success" type="submit">Submit</button>

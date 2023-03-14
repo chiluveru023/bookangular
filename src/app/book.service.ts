@@ -9,15 +9,15 @@ import { Genre } from './genre'
 })
 export class BookService {
    
-  private apiURL = "http://localhost:8585/api/books"
-  private apiPublishers ="http://localhost:8585/api/publishers"
-  private apiGenre ="http://localhost:8585/api/genres"
+  private apiURL = "http://localhost:8181/api/books"
+  private apiPublishers ="http://localhost:8181/api/publisher"
+  private apiGenre ="http://localhost:8181/api/genre"
   constructor(private httpClient:HttpClient) { }
   getBookList():Observable<Book[]>{
     return this.httpClient.get<Book[]>(`${this.apiURL}`);
   }
-  saveBook(book:Book):Observable<Object>{
-    return this.httpClient.post(`${this.apiURL}`, book);
+  saveBook(genereId: any, publisherId: any,book:Book):Observable<Object>{
+    return this.httpClient.post(`${this.apiURL}`+"/" + genereId + "/" + publisherId, book);
   }
 
   getPublishers():Observable<Publisher[]>{
@@ -31,18 +31,13 @@ export class BookService {
     return this.httpClient.get<Book>(`${this.apiURL}/${book_id}`);
   }
 
-  updateBook(book_id:number,book:Book):Observable<Object>{
-    return this.httpClient.put(`${this.apiURL}/${book_id}`,book);
+  updateBook(genereId: any, publisherId: any,book_id:number,book:Book):Observable<Object>{
+    const url = this.apiURL +'/'+ genereId + '/' + publisherId + '/'+ book_id;
+    return this.httpClient.put(url, book);
   }
   deleteBook(book_id:number):Observable<Object>{
     return this.httpClient.delete(`${this.apiURL}/${book_id}`);
   }
 
-  clearCache() {
-    this.httpClient.get('/api/clear-cache').subscribe(response => {
-      console.log('Cache cleared successfully');
-    }, error => {
-      console.error('Error clearing cache', error);
-    });
-  }
+  // 
 }
